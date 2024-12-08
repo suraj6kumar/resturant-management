@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <script src="js/main.js" type="module" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Bistro Manager</div>
+        <div class="nav-items">
+            <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+            <button class="nav-btn" data-view="reservations">Reservations</button>
+            <button class="nav-btn" data-view="orders">Orders</button>
+            <button class="nav-btn" data-view="menu">Menu</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div id="dashboard" class="view active">
+            <h2>Dashboard</h2>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Today's Reservations</h3>
+                    <p class="stat-number" id="reservation-count">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Active Orders</h3>
+                    <p class="stat-number" id="order-count">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Menu Items</h3>
+                    <p class="stat-number" id="menu-count">0</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="reservations" class="view">
+            <h2>Reservations</h2>
+            <button class="btn-primary" id="new-reservation-btn">New Reservation</button>
+            <div class="reservations-list" id="reservations-container"></div>
+        </div>
+
+        <div id="orders" class="view">
+            <h2>Orders</h2>
+            <div class="orders-container">
+                <div class="active-orders" id="active-orders">
+                    <h3>Active Orders</h3>
+                </div>
+                <div class="completed-orders" id="completed-orders">
+                    <h3>Completed Orders</h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="menu" class="view">
+            <h2>Menu Management</h2>
+            <button class="btn-primary" id="new-menu-item-btn">Add Menu Item</button>
+            <div class="menu-grid" id="menu-grid"></div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <div class="modal" id="reservation-modal">
+        <div class="modal-content">
+            <h3>New Reservation</h3>
+            <form id="reservation-form">
+                <input type="text" placeholder="Customer Name" required>
+                <input type="number" placeholder="Number of Guests" required>
+                <input type="datetime-local" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <textarea placeholder="Special Requests"></textarea>
+                <button type="submit" class="btn-primary">Create Reservation</button>
+                <button type="button" class="btn-secondary modal-close">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="menu-item-modal">
+        <div class="modal-content">
+            <h3>Add Menu Item</h3>
+            <form id="menu-item-form">
+                <input type="text" placeholder="Item Name" required>
+                <input type="number" placeholder="Price" step="0.01" required>
+                <select required>
+                    <option value="">Select Category</option>
+                    <option value="appetizer">Appetizer</option>
+                    <option value="main">Main Course</option>
+                    <option value="dessert">Dessert</option>
+                    <option value="beverage">Beverage</option>
+                </select>
+                <textarea placeholder="Description" required></textarea>
+                <button type="submit" class="btn-primary">Add Item</button>
+                <button type="button" class="btn-secondary modal-close">Cancel</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
